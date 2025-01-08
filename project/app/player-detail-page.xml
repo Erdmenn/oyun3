@@ -1,0 +1,38 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="{{ player.name }}">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="{{ goBack }}" />
+    </ActionBar>
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Player Info -->
+            <Label text="{{ 'Ad: ' + player.name }}" class="text-lg" textWrap="true" />
+            <Label text="{{ 'Pozisyon: ' + player.position }}" class="text-lg" textWrap="true" />
+            <Label text="{{ 'Genel: ' + player.overall }}" class="text-lg" textWrap="true" />
+            <Label text="{{ 'Pasif Yetenek: ' + (player.passiveSkill ? getPassiveSkillName(player.passiveSkill) : 'Yok') }}" class="text-lg" textWrap="true" />
+            
+            <!-- Skills -->
+            <Label text="Yetenekler" class="text-xl font-bold mt-4 mb-2" />
+            <GridLayout rows="auto,auto,auto,auto" columns="*,*" class="mb-4">
+                <Label text="{{ 'Refleks: ' + player.skills.reflex }}" row="0" col="0" class="p-1" />
+                <Label text="{{ 'Hız: ' + player.skills.speed }}" row="0" col="1" class="p-1" />
+                <Label text="{{ 'Çalım: ' + player.skills.dribbling }}" row="1" col="0" class="p-1" />
+                <Label text="{{ 'Top Sürme: ' + player.skills.ballControl }}" row="1" col="1" class="p-1" />
+                <Label text="{{ 'Dayanıklılık: ' + player.skills.stamina }}" row="2" col="0" class="p-1" />
+                <Label text="{{ 'Şut: ' + player.skills.shooting }}" row="2" col="1" class="p-1" />
+                <Label text="{{ 'Pas: ' + player.skills.passing }}" row="3" col="0" class="p-1" />
+                <Label text="{{ 'Ustalık: ' + player.skills.skill }}" row="3" col="1" class="p-1" />
+            </GridLayout>
+            
+            <!-- Position Selection -->
+            <Label text="Mevki Seç:" class="text-xl font-bold mb-2" />
+            <ListView items="{{ positions }}" itemTap="{{ onPositionTap }}" height="200" class="list-group">
+                <ListView.itemTemplate>
+                    <StackLayout class="p-2">
+                        <Label text="{{ $value }}" 
+                               class="{{ $value === $parents['ListView'].player.position ? 'text-blue-600 font-bold' : '' }}" />
+                    </StackLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</Page>

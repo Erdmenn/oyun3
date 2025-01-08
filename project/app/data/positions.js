@@ -1,0 +1,1 @@
+export const positions = ["Seçilmedi", "Kaleci", "Defans", "Orta Saha", "Forvet"];

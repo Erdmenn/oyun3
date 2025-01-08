@@ -1,0 +1,10 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Football Manager" />
+    <StackLayout class="p-4">
+        <Label text="Football Manager" class="text-2xl text-center mb-4" />
+        <Button text="Yeni Oyun" tap="{{ startNewGame }}" class="-primary mb-4" />
+        <Button text="Devam Et" tap="{{ continueGame }}" class="-primary mb-4" />
+        <Button text="Oyuncular" tap="{{ navigateToPlayers }}" class="-primary mb-4" />
+        <Button text="Test Sayfası" tap="{{ onButtonTap }}" class="-primary" />
+    </StackLayout>
+</Page>

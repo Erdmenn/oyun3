@@ -1,0 +1,26 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Oyuncular">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="{{ goBack }}" />
+    </ActionBar>
+    <StackLayout>
+        <!-- Buttons at the top -->
+        <GridLayout rows="auto" columns="*,*,*" class="p-2">
+            <Button text="⚽ Maç" tap="{{ onButtonTap }}" col="0" class="btn btn-primary m-1" id="btn-1"/>
+            <Button text="🎒 Envanter" tap="{{ onButtonTap }}" col="1" class="btn btn-primary m-1" id="btn-2"/>
+            <Button text="🏪 Market" tap="{{ onButtonTap }}" col="2" class="btn btn-primary m-1" id="btn-3"/>
+        </GridLayout>
+        
+        <!-- Players list -->
+        <ListView items="{{ players }}" itemTap="{{ onPlayerTap }}" class="list-group">
+            <ListView.itemTemplate>
+                <StackLayout class="list-group-item p-2">
+                    <Label text="{{ name }}" class="text-lg font-bold"/>
+                    <Label text="{{ position }}" class="text-sm text-gray-600"/>
+                    <Label text="{{ 'Genel: ' + overall }}" class="text-sm"/>
+                    <Label text="{{ passiveSkill ? 'Pasif: ' + $parents['ListView'].getPassiveSkillName(passiveSkill) : 'Pasif Yetenek: Yok' }}" 
+                           class="text-sm text-blue-600"/>
+                </StackLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </StackLayout>
+</Page>
